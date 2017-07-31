@@ -3,14 +3,12 @@ package com.example.alex.facecalc;
 import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
+
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.support.design.widget.AppBarLayout;
+
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -18,16 +16,14 @@ import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.TextView;
+
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.example.alex.facecalc.camera.CameraSourcePreview;
 import com.example.alex.facecalc.camera.GraphicOverlay;
 import com.google.android.gms.vision.CameraSource;
-import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.MultiProcessor;
 import com.google.android.gms.vision.Tracker;
@@ -203,42 +199,31 @@ public final class MainActivity extends AppCompatActivity {
                 .show();
     }
 
-    /**
-     * Creates and starts the camera.  Note that this uses a higher resolution in comparison
-     * to other detection examples to enable the barcode detector to detect small barcodes
-     * at long distances.
-     */
+ //start camera
     private void createCameraSource() {
 
-        // TODO: Create a face detector for real time face detection
-        // 1. Get the application's context
-        //
-        // 2. Create a FaceDetector object for real time detection
-        //    Ref: https://developers.google.com/vision/android/face-tracker-tutorial
+
         FaceDetector trackingDetector = new FaceDetector.Builder(getApplicationContext())
                 .setMode(FaceDetector.FAST_MODE)
                 .build();
-        // 3. Create a FaceDetector object for detecting faces on a static photo
+
         mStaticFaceDetector = new FaceDetector.Builder(getApplicationContext())
                 .setTrackingEnabled(false)
                 .setLandmarkType(FaceDetector.ALL_LANDMARKS)
                 .setMode(FaceDetector.FAST_MODE)
                 .build();
-        // 4. Create a GraphicFaceTrackerFactory
+
         GraphicFaceTrackerFactory graphicFaceTracker = new GraphicFaceTrackerFactory();
-        // 5. Pass the GraphicFaceTrackerFactory to
-        //    a MultiProcessor.Builder to create a MultiProcessor
+
         MultiProcessor multiProcessor = new MultiProcessor.Builder<>(graphicFaceTracker).build();
-        // 6. Associate the MultiProcessor with the real time detector
+
         trackingDetector.setProcessor(multiProcessor);
-        // 7. Check if the real time detector is operational
+
         if (!trackingDetector.isOperational()){
 
             Log.e(TAG, "Face detector not operational");
         }
-        // 8. Create a camera source to capture video images from the camera,
-        //    and continuously stream those images into the detector and
-        //    its associated MultiProcessor
+
         mCameraSource = new CameraSource.Builder(getApplicationContext(), trackingDetector)
                 .setRequestedPreviewSize(800,600)
                 .setFacing(CameraSource.CAMERA_FACING_BACK)
@@ -256,7 +241,6 @@ public final class MainActivity extends AppCompatActivity {
 
         startCameraSource();
     }
-
 
     /**
      * Stops the camera.

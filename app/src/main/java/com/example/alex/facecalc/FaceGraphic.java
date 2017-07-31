@@ -1,14 +1,11 @@
 package com.example.alex.facecalc;
 
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.util.SparseArray;
 
 import  com.example.alex.facecalc.camera.GraphicOverlay;
 
-import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.face.Face;
 
 
@@ -38,7 +35,6 @@ class FaceGraphic extends GraphicOverlay.Graphic {
     private Paint mBoxPaint;
     private Paint mBluePaint;
     private Paint whitePaint;
-
 
     private volatile Face mFace;
     private int mFaceId;
@@ -81,9 +77,7 @@ class FaceGraphic extends GraphicOverlay.Graphic {
         postInvalidate();
     }
 
-    /**
-     * Draws the face annotations for position on the supplied canvas.
-     */
+   //Face tracking box
     @Override
     public void draw(Canvas canvas) {
 
