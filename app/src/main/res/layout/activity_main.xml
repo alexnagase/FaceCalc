@@ -27,7 +27,7 @@
         android:background="@android:color/darker_gray">
 
 
-        <edu.ucsb.ece.ece150.maskme.camera.CameraSourcePreview
+        <com.example.alex.facecalc.camera.CameraSourcePreview
             android:id="@+id/preview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignWithParentIfMissing="true">
 
-            <edu.ucsb.ece.ece150.maskme.camera.GraphicOverlay
+            <com.example.alex.facecalc.camera.GraphicOverlay
                 android:id="@+id/faceOverlay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignWithParentIfMissing="true" />
 
-        </edu.ucsb.ece.ece150.maskme.camera.CameraSourcePreview>
+        </com.example.alex.facecalc.camera.CameraSourcePreview>
 
     </FrameLayout>
 
