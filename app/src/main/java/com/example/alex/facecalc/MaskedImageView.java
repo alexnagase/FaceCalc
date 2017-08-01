@@ -21,7 +21,7 @@ public class MaskedImageView extends android.support.v7.widget.AppCompatImageVie
     private enum MaskType {
         NOMASK, FIRST, SECOND
     }
-    private static final float ID_TEXT_SIZE = 50.0f;
+    private static final float ID_TEXT_SIZE = 60.0f;
     private SparseArray<Face> mFaces = null;
     private MaskType maskType = MaskType.NOMASK;
     Paint mPaint = new Paint();
@@ -149,7 +149,7 @@ public class MaskedImageView extends android.support.v7.widget.AppCompatImageVie
             double eyeDistance = (Math.sqrt(Math.pow(rex-lex, 2)+ Math.pow(rey-ley,2))*scale);
             double ratio = Math.round(eyeDistance/face.getWidth() * 10000D) / 10000D;
 
-            canvas.drawText(Double.toString(ratio),((float)scale)*((face.getPosition().x + face.getWidth())/2),((float)scale)*(face.getPosition().y), mPaint2);
+            canvas.drawText(Double.toString(ratio),(float)scale*(face.getPosition().x+face.getWidth()/2),(float)scale*(face.getPosition().y+face.getHeight()/4), mPaint2);
         }
     }
 
