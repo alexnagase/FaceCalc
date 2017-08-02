@@ -106,7 +106,6 @@ public class MaskedImageView extends android.support.v7.widget.AppCompatImageVie
 
                 }
 
-                canvas.drawText("123456", face.getPosition().x + face.getWidth(), face.getPosition().y + face.getHeight(), mPaint2);
             }
         }
     }
